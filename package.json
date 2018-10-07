@@ -1,0 +1,61 @@
+{
+  "name": "steam-companion",
+  "version": "1.0.0",
+  "description": "web application to provide toosl and features for steam users with the steam api.",
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "webpackwatcher": "webpack -w ",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StanThuman/SteamCompanion.git"
+  },
+  "author": "Stan Thuman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StanThuman/SteamCompanion/issues"
+  },
+  "homepage": "https://github.com/StanThuman/SteamCompanion#readme",
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "@material-ui/core": "^3.1.0",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "lodash": "^4.17.11",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
+    "react-jss": "^8.6.1",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0",
+    "serialize-javascript": "^1.5.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "babel-preset-env": "^1.7.0",
+    "chai": "^4.2.0",
+    "chai-enzyme": "^1.0.0-beta.1",
+    "css-loader": "^1.0.0",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
+    "ignore-loader": "^0.1.2",
+    "mocha": "^5.2.0",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.17.2",
+    "webpack-cli": "^3.1.0",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
