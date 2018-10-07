@@ -21,7 +21,7 @@ import red from '@material-ui/core/colors/red';
 import { createStore  } from 'redux';
 import{ Provider } from 'react-redux';
 
-import App from '../App';
+import App from '../components/App';
 import { steamApp } from '../redux/steam-app'
 
 import { mainTheme } from '../styles/Styles'

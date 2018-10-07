@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { hydrate } from 'react-dom';
 
-import App from '../App';
+import App from '../components/App';
 import { BrowserRouter } from 'react-router-dom';
 import JssProvider from 'react-jss/lib/JssProvider';
 
@@ -22,7 +22,7 @@ import {
 
 class Main extends Component {
   componentDidMount() {
-    
+
     const jssStyles = document.getElementById('jss-server-side');
     if(jssStyles && jssStyles.parentNode) {
       jssStyles.parentNode.removeChild(jssStyles);
