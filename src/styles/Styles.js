@@ -1,9 +1,5 @@
 import { fade } from '@material-ui/core/styles/colorManipulator';
-import {
-  MuiThemeProvider,
-  createMuiTheme,
-  createGenerateClassName
-} from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 export const mainTheme = createMuiTheme({
   palette: {

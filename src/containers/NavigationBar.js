@@ -1,23 +1,21 @@
 import React, { Component } from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, withRouter, Switch, Link } from 'react-router-dom';
+
+
 import  { CHANGE_PAGEROUTE, changePageRoute } from '../redux/actions';
 import { pageRoutes } from '../redux/reducers';
 import { connect } from 'react-redux';
+
 import { withStyles } from '@material-ui/core/styles';
 import { fade } from '@material-ui/core/styles/colorManipulator';
+
 import NavBar from '../components/NavBar';
-import { withRouter } from 'react-router-dom';
+
 export const styles = theme => ({
 
   root: {
     width: '100%'
-  //  flexGrow: 1
-  }
-  ,
-  appBar: {
-
-  }
-  ,
+  },
   grow: {
     flexGrow: 1,
   },
@@ -81,7 +79,6 @@ export const styles = theme => ({
     fontWeight: 'bold',
     textDecoration: 'none'
   },
-
   flexContainer: {
     flexGrow: 3
   },
@@ -90,9 +87,7 @@ export const styles = theme => ({
   },
   labelWrapped: {
       flexDirection: 'row',
-
   }
-
 });
 
 const navigationLinks = [
@@ -120,8 +115,7 @@ const navigationLinks = [
     id: 4,
     label: 'Steam',
     href: '/nowhere'
-  }
-]
+  }];
 
 
 const mapStateToProps = state => {

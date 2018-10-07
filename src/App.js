@@ -5,8 +5,9 @@ import { createStore } from 'redux';
 import { connect } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import NavigationBar from './containers/NavigationBar';
-import Home from './containers/home-layout';
-import About from './containers/about-layout';
+import HomeLayout from './containers/home-layout';
+import CompareLayout from './containers/compare-layout';
+import AboutLayout from './containers/about-layout';
 import Grid from '@material-ui/core/Grid';
 
 //root layout
@@ -46,8 +47,9 @@ const App = ({ store, classes }) => (
       <div className={ classes.container }>
 
             <Switch>
-              <Route exact path="/" component={ Home } />
-              <Route exact path="/about" component={ About } />
+              <Route exact path="/" component={ HomeLayout } />
+              <Route exact path="/compare" component={ CompareLayout } />
+              <Route exact path="/about" component={ AboutLayout } />
             </Switch>
 
 

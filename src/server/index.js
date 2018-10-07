@@ -34,6 +34,9 @@ app.use(express.static('public')); //server public files to frontend
 app.get('*', (req,res) => {
   let initialState = { routeNumber: 0};
   switch(req.originalUrl){
+    case '/compare':
+    initialState.routeNumber = 1;
+    break;
     case '/about':
       initialState.routeNumber = 3;
     break;

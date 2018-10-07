@@ -7,21 +7,19 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = theme => (
-  {
-    root: {
-      paddingTop: theme.spacing.unit * 2,
-      paddingBottom: theme.spacing.unit * 2,
-      flexGrow: 1
-    },
-    paper: {
-      padding: 25,
-      backgroundColor: '#c1d5e0'
-    }
+const styles = theme => ({
+  root: {
+    paddingTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 2,
+    flexGrow: 1
+  },
+  paper: {
+    padding: 25,
+    backgroundColor: '#c1d5e0'
   }
-)
+})
 
-class About extends Component {
+class AboutLayout extends Component {
 
   render(){
     const { classes } = this.props;
@@ -89,4 +87,4 @@ class About extends Component {
 }
 
 
-export default withStyles(styles)(About)
+export default withStyles(styles)(AboutLayout)
