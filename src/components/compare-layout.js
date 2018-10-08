@@ -28,17 +28,22 @@ class CompareLayout extends Component {
   render(){
     const { classes } = this.props;
     return(
+    <div>
       <Grid container justify='center' alignItems='center' spacing={ 24 }>
         <Grid item md={ 8 }>
           <Paper className={ classes.paper } color='secondary'>
             <Typography variant='title' gutterBottom>Stepper placeholder</Typography>
           </Paper>
         </Grid>
-        <Grid item md={ 8 }>
-          <SteamUserSearch paperStyle={ classes.paper } />
-        </Grid>
+      </Grid>
+      <Grid container justify='center' alignItems='center' spacing={ 24 }>
 
-    </Grid>
+      <Grid item container md={ 8 }>
+        <SteamUserSearch paperStyle={ classes.paper } />
+      </Grid>
+      </Grid>
+    </div>
+
 
     );
   }

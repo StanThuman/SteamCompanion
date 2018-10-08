@@ -8,24 +8,29 @@ import Divider from '@material-ui/core/Divider';
 import Textfield from '@material-ui/core/Textfield';
 
 export const SteamUserSearch = ({ paperStyle }) => (
-  <Paper className={ paperStyle } color='secondary'>
-    <Typography variant='title' gutterBottom>Search Steam Users</Typography>
-    <Divider />
-    <Grid container  spacing={ 24 }>
-      <Grid item md={ 4 }>
-        <Textfield
-          label='Steam Username'
-          onChange={ () => {}}
-          margin='normal'
-        />
-        <Button variant='contained' color='secondary'>Search</Button>
-      </Grid>
-      <Grid item md={ 2 }>
+  <Grid item md={3} >
 
-      </Grid>
+      <Paper className={ paperStyle } color='secondary'>
+        <Grid container alignItems='baseline'>
+          <Grid item md={ 12 }>
+            <Typography variant='title' gutterBottom>Search Steam Users</Typography>
+            <Divider />
+          </Grid>
+          <Grid item md={ 8 }>
+            <Textfield
+              label='Steam Username'
+
+              onChange={ () => {}}
+              margin='normal' />
+          </Grid>
+
+          <Grid item md={ 2 }>
+            <Button variant='contained' color='secondary'>Search</Button>
+          </Grid>
+        </Grid>
+      </Paper>
 
     </Grid>
-  </Paper>
 )
 
 export default SteamUserSearch;
