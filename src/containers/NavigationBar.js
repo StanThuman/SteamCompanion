@@ -129,14 +129,14 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
+const mapDispatchToProps = dispatch => ({
+
     handleClick: (event, value) => {
       //console.log(`value = ${value}`);
       dispatch(changePageRoute(value))
     }
-  }
-}
+
+})
 
 const NavBarWithRoutes = withRouter(NavBar);
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(NavBarWithRoutes));//

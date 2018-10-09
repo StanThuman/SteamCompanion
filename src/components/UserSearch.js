@@ -7,10 +7,12 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Textfield from '@material-ui/core/Textfield';
 
-export const SteamUserSearch = ({ paperStyle }) => (
-  <Grid item md={3} >
 
-      <Paper className={ paperStyle } color='secondary'>
+
+
+export const UserSearch = ({ title, classes, handleClick }) => (
+  <Grid item md={4} >
+      <Paper className={ classes.root } color='primary'>
         <Grid container alignItems='baseline'>
           <Grid item md={ 12 }>
             <Typography variant='title' gutterBottom>Search Steam Users</Typography>
@@ -18,14 +20,14 @@ export const SteamUserSearch = ({ paperStyle }) => (
           </Grid>
           <Grid item md={ 8 }>
             <Textfield
-              label='Steam Username'
+              label={ title }
 
               onChange={ () => {}}
               margin='normal' />
           </Grid>
 
           <Grid item md={ 2 }>
-            <Button variant='contained' color='secondary'>Search</Button>
+            <Button variant='contained' color='secondary' onClick={ handleClick }>Search</Button>
           </Grid>
         </Grid>
       </Paper>
@@ -33,4 +35,4 @@ export const SteamUserSearch = ({ paperStyle }) => (
     </Grid>
 )
 
-export default SteamUserSearch;
+export default UserSearch;

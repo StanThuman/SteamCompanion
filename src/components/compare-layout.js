@@ -8,16 +8,15 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 
-import SteamUserSearch from '../components/SteamUserSearch';
+import SteamUserSearch from '../containers/SteamUserSearch';
 
 const styles = themes => ({
   root: {
-
+    ...themes.mixins.gutters(),
+    paddingTop: themes.spacing.unit * 2,
+    paddingBottom: themes.spacing.unit * 2
   },
-  paper: {
-    padding: 25,
-    backgroundColor: '#c1d5e0'
-  }
+
 })
 
 class CompareLayout extends Component {
@@ -31,7 +30,7 @@ class CompareLayout extends Component {
     <div>
       <Grid container justify='center' alignItems='center' spacing={ 24 }>
         <Grid item md={ 8 }>
-          <Paper className={ classes.paper } color='secondary'>
+          <Paper className={ classes.root } color='secondary'>
             <Typography variant='title' gutterBottom>Stepper placeholder</Typography>
           </Paper>
         </Grid>
