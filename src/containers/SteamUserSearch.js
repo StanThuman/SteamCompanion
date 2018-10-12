@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import UserSearch from '../components/UserSearch';
 
-const styles = themes => ({
-  root: {
-    ...themes.mixins.gutters(),
-    paddingTop: themes.spacing.unit * 2,
-    paddingBottom: themes.spacing.unit * 2
-  }
-})
+// const styles = themes => ({
+//   root: {
+//     ...themes.mixins.gutters(),
+//     paddingTop: themes.spacing.unit * 2,
+//     paddingBottom: themes.spacing.unit * 2
+//   }
+// })
 
 
 const mapStateToProps = state => ({
@@ -29,4 +29,4 @@ const mapDispatchToProps = dispatch => ({
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(UserSearch))
+export default connect(mapStateToProps, mapDispatchToProps)(UserSearch)

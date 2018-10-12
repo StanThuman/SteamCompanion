@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 
 import SteamUserSearch from '../containers/SteamUserSearch';
-
+//import FriendList from './FriendList';
 const styles = themes => ({
   root: {
     ...themes.mixins.gutters(),
@@ -19,35 +19,33 @@ const styles = themes => ({
 
 })
 
-class CompareLayout extends Component {
-  constructor(props){
-    super(props);
-  }
+// class CompareLayout extends Component {
+//   constructor(props){
+//     super(props);
+//   }
 
-  render(){
-    const { classes } = this.props;
-    return(
-    <div>
-      <Grid container justify='center' alignItems='center' spacing={ 24 }>
-        <Grid item md={ 8 }>
-          <Paper className={ classes.root } color='secondary'>
-            <Typography variant='title' gutterBottom>Stepper placeholder</Typography>
-          </Paper>
+  const CompareLayout = ({ classes }) => (
+    <Grid container spacing={ 24 } justify='center' alignItems='center'>
+      <Grid item xs={8} >
+        <Paper className={ classes.root } color='secondary'>
+          <Typography variant='title' gutterBottom>Stepper placeholder</Typography>
+        </Paper>
+      </Grid>
+
+      <Grid item container justify='center' alignItems='center' spacing={ 24 }>
+        <Grid item lg={ 4 }>
+          <SteamUserSearch paperStyle={ classes.paper } />
+        </Grid>
+        <Grid item lg={ 4 }>
+          <SteamUserSearch paperStyle={ classes.paper } />
         </Grid>
       </Grid>
-      <Grid container justify='center' alignItems='center' spacing={ 24 }>
 
-      <Grid item container md={ 8 }>
-        <SteamUserSearch paperStyle={ classes.paper } />
-      </Grid>
-      </Grid>
-    </div>
+    </Grid>
+);
 
 
-    );
-  }
 
-}
 
 
 
