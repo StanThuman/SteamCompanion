@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import { mainTheme } from '../styles/Styles';
 import Friend from './Friend';
+import Grid from '@material-ui/core/Grid';
 
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
@@ -19,17 +20,44 @@ const styles = theme => ({
 })
 
 const FriendList = ({ classes }) => (
-  <Paper className={ classes.paper }>
-    <Typography variant='title' gutterBottom>
-      Stuff
-    </Typography>
-    <Divider />
-    <Friend />
-    <Friend />
-    <Friend />
-    <Friend />
-    <Friend />
-  </Paper>
+
+    <Paper className={ classes.paper }>
+      <Grid container spacing={8}>
+        <Grid item  lg={12}>
+          <Typography variant='title' gutterBottom>
+            Current Search List
+          </Typography>
+          <Divider />
+        </Grid>
+
+        <Grid item container lg={12} spacing={8}>
+
+          <Grid item lg={2} >
+            <Friend />
+          </Grid>
+
+          <Grid item lg={2}>
+            <Friend  />
+          </Grid>
+
+          <Grid item lg={2} >
+            <Friend />
+          </Grid>
+
+          <Grid item lg={2}>
+            <Friend  />
+          </Grid>
+          <Grid item lg={2} >
+            <Friend />
+          </Grid>
+
+          <Grid item lg={2}>
+            <Friend  />
+          </Grid>
+        </Grid>
+      </Grid>
+    </Paper>
+
 )
 
 
