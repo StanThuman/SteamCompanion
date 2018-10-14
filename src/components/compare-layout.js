@@ -8,14 +8,19 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 
-import SteamUserSearch from '../containers/SteamUserSearch';
-//import FriendList from './FriendList';
+import { mainTheme } from '../styles/Styles';
+import SteamFriendSearch from '../containers/SteamFriendSearch';
+import FriendList from './FriendList';
+
 const styles = themes => ({
-  root: {
+    paper: {
     ...themes.mixins.gutters(),
+    height: '100%',
+    backgroundColor: mainTheme.palette.primary.main,
     paddingTop: themes.spacing.unit * 2,
     paddingBottom: themes.spacing.unit * 2
   },
+
 
 })
 
@@ -24,25 +29,41 @@ const styles = themes => ({
 //     super(props);
 //   }
 
-  const CompareLayout = ({ classes }) => (
-    <Grid container spacing={ 24 } justify='center' alignItems='center'>
-      <Grid item xs={8} >
-        <Paper className={ classes.root } color='secondary'>
-          <Typography variant='title' gutterBottom>Stepper placeholder</Typography>
-        </Paper>
+  const CompareLayout = ({ classes }) => {
+
+      return(
+      <Grid container
+        spacing={ 24 }
+        direction='row'
+        justify='center'
+
+        alignItems='stretch' >
+        <Grid item container xs={ 8 } sm={ 8 } lg={8} spacing={24}>
+          <Grid item xs={ 12 }>
+            <Paper className={ classes.paper } >
+              <Typography variant='title' gutterBottom>Stepper placeholder</Typography>
+            </Paper>
+          </Grid>
+        </Grid>
+
+        <Grid item
+          container
+          direction='row'
+          justify='center'
+          alignItems='stretch'
+          lg={8} spacing={24}>
+
+            <Grid item lg={4}>
+              <SteamFriendSearch />
+            </Grid>
+            <Grid item lg={8}>
+                <FriendList />
+            </Grid>
+
       </Grid>
 
-      <Grid item container justify='center' alignItems='center' spacing={ 24 }>
-        <Grid item lg={ 4 }>
-          <SteamUserSearch paperStyle={ classes.paper } />
-        </Grid>
-        <Grid item lg={ 4 }>
-          <SteamUserSearch paperStyle={ classes.paper } />
-        </Grid>
-      </Grid>
-
-    </Grid>
-);
+    </Grid>)
+}
 
 
 

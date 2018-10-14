@@ -15,6 +15,7 @@ import {
   createMuiTheme,
   createGenerateClassName
 } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import green from '@material-ui/core/colors/green';
 import red from '@material-ui/core/colors/red';
 //redux imports
@@ -70,23 +71,22 @@ function convertReactToString(req, store){
   const generateClassName = createGenerateClassName();
   const sheetsRegistry = new SheetsRegistry();
   const sheetsManager = new Map();
-
-
-
   const css = sheetsRegistry.toString();
 
   const markup = renderToString(
     <Provider store={ store }>
-      <JssProvider registry={ sheetsRegistry } generateClassName={ generateClassName }>
-        <MuiThemeProvider theme={ mainTheme } sheetsManager={ sheetsManager }>
-          <StaticRouter location={ req.url } context={{}}>
-            <App  />
-          </StaticRouter>
-        </MuiThemeProvider>
-      </JssProvider>
+      <StaticRouter location={ req.url } context={{}}>
+        <JssProvider registry={ sheetsRegistry } generateClassName={ generateClassName }>
+          <MuiThemeProvider theme={ mainTheme } sheetsManager={ sheetsManager }>
+            <React.Fragment>
+              <CssBaseline />
+              <App  />
+            </React.Fragment>
+          </MuiThemeProvider>
+        </JssProvider>
+      </StaticRouter>
     </Provider>
   );
-
   return({markup, css});
 }
 
@@ -105,7 +105,7 @@ function renderHtml(reactPage, preloadedState){
           window.__PRELOADED_STATE__=${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
         </script>
       </head>
-      <body style="margin:0;background-color:#263238;">
+      <body>
         <div id='app'>${reactPage.markup}</div>
       </body>
     </html>

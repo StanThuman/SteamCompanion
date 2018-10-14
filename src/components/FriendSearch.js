@@ -7,25 +7,30 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Textfield from '@material-ui/core/Textfield';
 import { withStyles } from '@material-ui/core/styles';
+import { mainTheme } from '../styles/Styles';
 
-const styles = themes => ({
-  root: {
-    ...themes.mixins.gutters(),
-    paddingTop: themes.spacing.unit * 2,
-    paddingBottom: themes.spacing.unit * 2
-  },
+const styles = theme => ({
 
-})
+  paper: {
+      ...theme.mixins.gutters(),
+      height: '100%',
+      backgroundColor: mainTheme.palette.primary.main,
+      paddingTop: theme.spacing.unit * 2,
+      paddingBottom: theme.spacing.unit * 2
+    },
+});
 
-export const UserSearch = ({ title, classes, handleClick }) => (
+export const FriendSearch = ({ title, classes, handleClick }) => (
 
-      <Paper className={ classes.root } color='primary'>
+      <Paper className={ classes.paper } color='primary'>
         <Grid container>
+
           <Grid item container md={ 12 }>
             <Typography variant='title' gutterBottom>Search Steam Users</Typography>
-
           </Grid>
+
           <Divider />
+
           <Grid item container md={ 12 } >
             <Textfield
               label={ title }
@@ -37,10 +42,9 @@ export const UserSearch = ({ title, classes, handleClick }) => (
           <Grid item md={ 12 } container direction='row-reverse'>
             <Button variant='contained' color='secondary' onClick={ handleClick }>Search</Button>
           </Grid>
+
         </Grid>
       </Paper>
+);
 
-
-)
-
-export default withStyles(styles)(UserSearch);
+export default withStyles(styles)(FriendSearch);

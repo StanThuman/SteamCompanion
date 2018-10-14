@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { withStyles } from '@material-ui/core/styles';
-import UserSearch from '../components/UserSearch';
+import FriendSearch from '../components/FriendSearch';
 
 // const styles = themes => ({
 //   root: {
@@ -29,4 +29,4 @@ const mapDispatchToProps = dispatch => ({
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserSearch)
+export default connect(mapStateToProps, mapDispatchToProps)(FriendSearch)

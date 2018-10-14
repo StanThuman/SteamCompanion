@@ -11,6 +11,9 @@ export const mainTheme = createMuiTheme({
       //light: '#c3fdff',
       main: '#263238'
       //main: '#263238
+    },
+    background: {
+      default: '#263238'
     }
   }
 });
