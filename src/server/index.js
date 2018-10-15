@@ -23,9 +23,9 @@ import { createStore  } from 'redux';
 import{ Provider } from 'react-redux';
 
 import App from '../components/App';
-import { steamApp } from '../redux/steam-app'
+import rootReducer from '../redux/index';
 
-import { mainTheme } from '../styles/Styles'
+import { mainTheme } from '../styles/Styles';
 
 const app = express();
 app.use(express.static('public')); //server public files to frontend
@@ -53,9 +53,9 @@ app.get('*', (req,res) => {
 
 
 
-  const store = createStore(steamApp, initialState);
+  const store = createStore(rootReducer, initialState);
   var reactPage = convertReactToString(req, store);
-  console.log(req.url);
+  //console.log(req.url);
   res.send(renderHtml(reactPage, initialState));
 });
 

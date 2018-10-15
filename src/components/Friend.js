@@ -23,7 +23,7 @@ const Friend = ({ classes }) => (
 
     <Grid item lg={ 12 }>
       <Typography
-        variant='text'
+        
         align='center'>
         username
       </Typography>

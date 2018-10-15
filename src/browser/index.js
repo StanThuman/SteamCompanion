@@ -8,7 +8,7 @@ import {
   createGenerateClassName
 } from '@material-ui/core/styles';
 import App from '../components/App';
-import { steamApp } from '../redux/steam-app'
+import rootReducer from '../redux/index'
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { mainTheme } from '../styles/Styles';
@@ -32,7 +32,7 @@ class Main extends Component {
 
 const preloadedState = window.__PRELOADED_STATE__;
 delete window.__PRELOADED_STATE__;
-const store = createStore( steamApp, preloadedState);
+const store = createStore( rootReducer, preloadedState);
 
 console.log(preloadedState);
 
