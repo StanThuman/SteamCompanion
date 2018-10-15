@@ -10,7 +10,6 @@ import { withStyles } from '@material-ui/core/styles';
 import { mainTheme } from '../styles/Styles';
 
 const styles = theme => ({
-
   paper: {
       ...theme.mixins.gutters(),
       height: '100%',
