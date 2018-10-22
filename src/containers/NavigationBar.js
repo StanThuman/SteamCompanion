@@ -3,7 +3,7 @@ import { Route, withRouter, Switch, Link } from 'react-router-dom';
 
 
 import  { CHANGE_PAGEROUTE, changePageRoute } from '../redux/actions';
-import { pageRoutes } from '../redux/reducers';
+import { pageRoutes } from '../redux/navHighlight';
 import { connect } from 'react-redux';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -118,16 +118,11 @@ const navigationLinks = [
   }];
 
 
-const mapStateToProps = state => {
-  console.log("mapStateToprops");
-  console.log(state);
-  return {
+const mapStateToProps = state => ({
     title: 'Steam Companion',
     routeNumber: state.routeNumber,
     navigationLinks
-
-  }
-}
+})
 
 const mapDispatchToProps = dispatch => ({
 
@@ -138,5 +133,5 @@ const mapDispatchToProps = dispatch => ({
 
 })
 
-const NavBarWithRoutes = withRouter(NavBar);
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(NavBarWithRoutes));//
+//const NavBarWithRoutes = withRouter(NavBar);
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(NavBar));//

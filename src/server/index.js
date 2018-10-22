@@ -9,6 +9,8 @@ import JssProvider from 'react-jss/lib/JssProvider';
 import { renderToString } from 'react-dom/server';
 import serialize from 'serialize-javascript';
 import { StaticRouter } from 'react-router-dom';
+import { logger } from 'redux-logger';
+
 //material ui alreadyImportedModules
 import {
   MuiThemeProvider,
@@ -19,7 +21,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import green from '@material-ui/core/colors/green';
 import red from '@material-ui/core/colors/red';
 //redux imports
-import { createStore  } from 'redux';
+import thunk from 'redux-thunk';
+import { createStore, applyMiddleware } from 'redux';
 import{ Provider } from 'react-redux';
 
 import App from '../components/App';
@@ -53,7 +56,7 @@ app.get('*', (req,res) => {
 
 
 
-  const store = createStore(rootReducer, initialState);
+  const store = createStore(rootReducer, initialState, applyMiddleware(thunk, logger));
   var reactPage = convertReactToString(req, store);
   //console.log(req.url);
   res.send(renderHtml(reactPage, initialState));

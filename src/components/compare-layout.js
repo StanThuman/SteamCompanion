@@ -10,7 +10,7 @@ import Paper from '@material-ui/core/Paper';
 
 import { mainTheme } from '../styles/Styles';
 import SteamFriendSearch from '../containers/SteamFriendSearch';
-import FriendList from './FriendList';
+import SteamFriendList from '../containers/SteamFriendList';
 
 const styles = themes => ({
   paper: {
@@ -55,7 +55,7 @@ const CompareLayout = ({ classes }) => (
           <SteamFriendSearch />
         </Grid>
         <Grid item lg={8}>
-          <FriendList />
+          <SteamFriendList />
         </Grid>
   </Grid>
 </Grid>)

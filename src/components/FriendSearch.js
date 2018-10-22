@@ -19,29 +19,23 @@ const styles = theme => ({
     },
 });
 
-export const FriendSearch = ({ title, classes, handleClick }) => (
+export const FriendSearch = (props) => (
 
-      <Paper className={ classes.paper } color='primary'>
+      <Paper className={ props.classes.paper } color='primary'>
         <Grid container>
 
-          <Grid item container md={ 12 }>
-            <Typography variant='title' gutterBottom>Search Steam Users</Typography>
+          <Grid item lg={ 12 }>
+            <Typography variant='title' gutterBottom>
+              Search Steam Users
+              <Divider />
+            </Typography>
+
           </Grid>
 
           <Divider />
-
-          <Grid item container md={ 12 } >
-            <Textfield
-              label={ title }
-              fullWidth
-              onChange={ () => {}}
-              margin='normal' />
-          </Grid>
-
-          <Grid item md={ 12 } container direction='row-reverse'>
-            <Button variant='contained' color='secondary' onClick={ handleClick }>Search</Button>
-          </Grid>
-
+          <Grid item lg={ 12 }>
+              { props.children }
+            </Grid>
         </Grid>
       </Paper>
 );

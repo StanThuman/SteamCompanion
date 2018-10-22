@@ -11,7 +11,7 @@ const styles = theme => ({
   }
 });
 
-const Friend = ({ classes }) => (
+const Friend = ({ classes, name }) => (
   <Grid container
     direction='column'
     alignItems='center'
@@ -23,9 +23,9 @@ const Friend = ({ classes }) => (
 
     <Grid item lg={ 12 }>
       <Typography
-        
+
         align='center'>
-        username
+        { name }
       </Typography>
     </Grid>
 

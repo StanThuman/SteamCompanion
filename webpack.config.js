@@ -19,10 +19,7 @@ var browserConfig = {
         test: /\.(js)$/,
         use: 'babel-loader',
         exclude: /notes/
-      }//,
-      // { test: /\.scss$/,
-      //   use: [ 'style-loader', 'css-loader', 'sass-loader' ]
-      // }//end module
+      }
     ]
   },
   plugins: [
@@ -70,9 +67,7 @@ var serverConfig = {
         exclude: [/node_modules/, /notes/],
         loader: 'babel-loader'
       }
-      // ,{ test: /\.scss$/,
-      //   use: ["css-loader", "sass-loader",  ]
-      // }//end
+
     ]
   },
   plugins: [
@@ -81,12 +76,5 @@ var serverConfig = {
     })
   ]
 }
-
-// "babel": {
-//   "presets": [
-//     "@babel/preset-env",
-//     "@babel/preset-react"
-//   ]
-// },
 
 module.exports = [serverConfig, unitTestsConfig, browserConfig]//, stylesConfig];

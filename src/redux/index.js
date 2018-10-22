@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
-import { routeNumber } from './reducers';
+import { routeNumber } from './navHighlight';
+import { steamUserSearch } from './users';
 
 export default combineReducers({
-  routeNumber
+  routeNumber, steamUserSearch
 });
