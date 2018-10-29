@@ -30,25 +30,25 @@ var browserConfig = {
   ]
 }
 
-var unitTestsConfig = {
-  target: 'node',
-  mode: 'development',
-  entry: './src/tests/index.js',
-  output: {
-    path: __dirname,
-    filename: 'tests.js',
-    publicPath: '/'
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(js)$/,
-        exclude: [/node_modules/, /notes/],
-        loader: 'babel-loader'
-      }//end module
-    ]
-  }
-}
+// var unitTestsConfig = {
+//   target: 'node',
+//   mode: 'development',
+//   entry: './src/tests/test.js',
+//   output: {
+//     path: __dirname,
+//     filename: 'tests.js',
+//     publicPath: '/'
+//   },
+//   module: {
+//     rules: [
+//       {
+//         test: /\.(js)$/,
+//         exclude: [/node_modules/, /notes/],
+//         loader: 'babel-loader'
+//       }//end module
+//     ]
+//   }
+// }
 
 var serverConfig = {
   mode: 'development',
@@ -77,4 +77,4 @@ var serverConfig = {
   ]
 }
 
-module.exports = [serverConfig, unitTestsConfig, browserConfig]//, stylesConfig];
+module.exports = [serverConfig, browserConfig]//, stylesConfig]; unitTestsConfig

@@ -7,31 +7,60 @@ import Textfield from '@material-ui/core/Textfield';
 import FriendSearch from '../components/FriendSearch';
 import { fetchUserName, updateUserName } from '../redux/actions';
 
-const SteamFriendSearch = ({ dispatch }) => {
-  let currentUserNameInput;
-  return(
-    <FriendSearch>
-      <Grid item container lg={ 12 } >
+const SteamFriendSearch = ({ userList, userNameInput, onChange, onSubmit }) => (
+  <FriendSearch>
+    <form onSubmit={ (event) => {
+      event.preventDefault();
+      onSubmit(event, userList, userNameInput)
+    }}>
+      <Grid item container lg={ 12 }>
         <Textfield
           fullWidth
+          autoComplete='off'
           label= 'Steam Username'
-          onChange={ () => {dispatch(updateUserName(currentUserNameInput.value))} }
-          inputRef={ node => currentUserNameInput = node }
+          onChange={ onChange }
+          value={ userNameInput }
           margin='normal' />
       </Grid>
 
       <Grid item md={ 12 } container direction='row-reverse'>
-        <Button type='button'
+        <Button
+          type='submit'
           variant='contained'
-          color='secondary'
-          onClick={ () => {
-            if(currentUserNameInput.value !== '')
-              dispatch(fetchUserName(currentUserNameInput.value));
-          }}
-            >Search</Button>
+          color='secondary'>
+          Search
+        </Button>
       </Grid>
+    </form>
+  </FriendSearch>
+);
 
-  </FriendSearch>);
-}
+const mapStateToProps = (state) => ({
+  userList: state.steamUserSearch.userList,
+  userNameInput: state.steamUserSearch.userNameInput
+})
 
-export default connect()(SteamFriendSearch)
+const mapDispatchToProps = dispatch => ({
+  onChange: (event) => {
+    dispatch(updateUserName(event.target.value))
+  },
+  onSubmit: (event,  userList, userNameInput) => {
+    //check if friend username is in current list
+    let userExists = false;
+    let listIterator = 0;
+    while(!userExists && listIterator < userList.length){
+      if(userNameInput.toLowerCase() === userList[listIterator].userName.toLowerCase())
+        userExists = true;
+      listIterator++;
+    }
+
+    if(!userExists)
+      dispatch(fetchUserName(userNameInput));
+    else
+      console.log("user already in list");
+      //TODO: handle error
+  }
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SteamFriendSearch)

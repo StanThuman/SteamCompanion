@@ -7,6 +7,7 @@ export const REQUEST_USERNAME = 'REQUEST_ USERNAME';
 export const FETCH_USERNAME = 'FETCH_USERNAME_';
 
 export const FETCH_USERNAME_SUCCESS = 'FETCH_USERNAME_SUCCESS';
+export const FETCH_USERNAME_NOT_FOUND = 'FETCH_USERNAME_NOT_FOUND';
 export const FETCH_USERNAME_FAILURE = 'FETCH_USERNAME_FAILURE';
 export const RECEIVE_USERNAME = 'RECEIVE_USERNAME';
 
@@ -36,6 +37,11 @@ export const requestUserName = userName => ({
     userName
 });
 
+export const requestUsernameNotFound = () => ({
+  type: FETCH_USERNAME_NOT_FOUND
+})
+
+
 let userId = 0;
 export const receiveUserName = (userName, json) => ({
   type: RECEIVE_USERNAME,
@@ -60,7 +66,10 @@ export const fetchUserName = userName => {
       )
     .then( (json) => {
         console.log(json.response);
-        dispatch(receiveUserName(userName, json.response));
+        if('message' in json.response)
+          dispatch(requestUsernameNotFound());
+        else
+          dispatch(receiveUserName(userName, json.response));
     });
 }};
 

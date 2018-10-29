@@ -36,7 +36,9 @@ app.use(express.static('public')); //server public files to frontend
 
 //callback for server requests
 app.get('*', (req,res) => {
-  let initialState = { routeNumber: 0};
+  let initialState = {
+    routeNumber: 0    
+  };
   switch(req.originalUrl){
     case '/compare':
     initialState.routeNumber = 1;

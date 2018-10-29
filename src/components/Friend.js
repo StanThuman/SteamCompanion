@@ -18,7 +18,7 @@ const Friend = ({ classes, name }) => (
     justify='center'>
 
     <Grid item lg={ 12 }>
-      <PermIdentityIcon className={ classes.iconAlignment } />
+      <PermIdentityIcon />
     </Grid>
 
     <Grid item lg={ 12 }>
@@ -32,4 +32,4 @@ const Friend = ({ classes, name }) => (
   </Grid>
 )
 
-export default withStyles(styles)(Friend);
+export default (Friend);

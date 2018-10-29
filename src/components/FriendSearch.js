@@ -19,9 +19,9 @@ const styles = theme => ({
     },
 });
 
-export const FriendSearch = (props) => (
+export const FriendSearch = ({ classes, children}) => (
 
-      <Paper className={ props.classes.paper } color='primary'>
+      <Paper className={ classes.paper } color='primary'>
         <Grid container>
 
           <Grid item lg={ 12 }>
@@ -29,13 +29,12 @@ export const FriendSearch = (props) => (
               Search Steam Users
               <Divider />
             </Typography>
-
           </Grid>
-
           <Divider />
           <Grid item lg={ 12 }>
-              { props.children }
-            </Grid>
+            { children }
+          </Grid>
+
         </Grid>
       </Paper>
 );

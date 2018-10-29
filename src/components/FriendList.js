@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 import { mainTheme } from '../styles/Styles';
@@ -30,24 +31,35 @@ const FriendList = ({ classes, userList, counter }) => (
         </Typography>
       </Grid>
     </Grid>
+    <Grid container>
+      <Grid item container lg={ 12 } spacing={ 8 }>
 
-    <Grid item container lg={ 12 } spacing={ 8 }>
 
+        {
+          userList.map( user =>
+            <Grid key={ user.id } item lg={2}>
+              <Friend name={ user.userName } />
+            </Grid>)
+        }
+      </Grid>
+    </Grid>
 
-      {
-        userList.map( user =>
-          <Grid key={ user.id } item lg={2}>
-            <Friend name={ user.userName } />
-          </Grid>)
-      }
+    <Grid item container justify='flex-end' alignItems='flex-end' spacing={ 8 } zeroMinWidth={true} lg={ 12 }>
+      <Grid item lg={2}>
+        { userList.length > 0 ? (
+          <Button >Compare</Button>
+        ): (
+          <span>nothing</span>
+        )}
+      </Grid>
     </Grid>
   </Paper>
 )
 
 FriendList.propTypes = {
   userList: PropTypes.arrayOf(PropTypes.shape({
-    steamId: PropTypes.string.isRequired,
-    userName: PropTypes.string.isRequired
+    steamId: PropTypes.string,
+    userName: PropTypes.string
   })).isRequired,
   counter: PropTypes.number,
   classes: PropTypes.object

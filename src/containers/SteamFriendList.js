@@ -6,8 +6,8 @@ import FriendList from '../components/FriendList';
 const mapStateToProps = state => {
   console.log(state)
   return ({
-    userList: state.steamUserSearch.userList,
-    counter : state.steamUserSearch.counter
+    userList: state.steamUserSearch.userList
+
   })
 }
 
