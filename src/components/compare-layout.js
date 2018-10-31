@@ -13,6 +13,9 @@ import SteamFriendSearch from '../containers/SteamFriendSearch';
 import SteamFriendList from '../containers/SteamFriendList';
 
 const styles = themes => ({
+  root:{
+    flexGrow: 1
+  },
   paper: {
     ...themes.mixins.gutters(),
     height: '100%',
@@ -24,6 +27,7 @@ const styles = themes => ({
 
 const CompareLayout = ({ classes }) => (
   <Grid container
+
     spacing={ 24 }
     direction='row'
     justify='center'
@@ -45,6 +49,7 @@ const CompareLayout = ({ classes }) => (
     </Grid>
 
     <Grid item
+      className={classes.root}
       container
       direction='row'
       justify='center'

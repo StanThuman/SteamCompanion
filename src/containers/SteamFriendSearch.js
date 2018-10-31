@@ -13,7 +13,7 @@ const SteamFriendSearch = ({ userList, userNameInput, onChange, onSubmit }) => (
       event.preventDefault();
       onSubmit(event, userList, userNameInput)
     }}>
-      <Grid item container lg={ 12 }>
+      <Grid container item lg={ 12 }>
         <Textfield
           fullWidth
           autoComplete='off'
@@ -23,7 +23,7 @@ const SteamFriendSearch = ({ userList, userNameInput, onChange, onSubmit }) => (
           margin='normal' />
       </Grid>
 
-      <Grid item md={ 12 } container direction='row-reverse'>
+      <Grid container item lg={ 12 } direction='row' justify='flex-end' alignItems='flex-end'>
         <Button
           type='submit'
           variant='contained'

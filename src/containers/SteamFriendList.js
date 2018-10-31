@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import FriendList from '../components/FriendList';
 //import { fetchUserName, updateUserName } from '../redux/actions';
 
-const mapStateToProps = state => {
-  console.log(state)
-  return ({
-    userList: state.steamUserSearch.userList
+const mapStateToProps = state => ({
+  userList: state.steamUserSearch.userList
+})
 
-  })
-}
+const mapDispatchToProps = ({ dispatch }) => ({
+  buttonHandler: (event) => {
+    console.log("CLICKED ME");
+  }
+})
 
-export default connect(mapStateToProps)(FriendList)
+export default connect(mapStateToProps, mapDispatchToProps)(FriendList)

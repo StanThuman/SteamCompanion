@@ -13,18 +13,19 @@ const styles = theme => ({
 
 const Friend = ({ classes, name }) => (
   <Grid container
-    direction='column'
-    alignItems='center'
-    justify='center'>
+    direction='column'>
 
-    <Grid item lg={ 12 }>
-      <PermIdentityIcon />
+    <Grid  item
+      lg={ 12 }>
+      <Grid container justify='center' alignItems='center'>
+        <Grid item lg={ 12 }>
+          <PermIdentityIcon />
+          </Grid>
+      </Grid>
     </Grid>
 
     <Grid item lg={ 12 }>
-      <Typography
-
-        align='center'>
+      <Typography>
         { name }
       </Typography>
     </Grid>
