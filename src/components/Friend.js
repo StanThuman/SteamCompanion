@@ -13,24 +13,25 @@ const styles = theme => ({
 
 const Friend = ({ classes, name }) => (
   <Grid container
-    direction='column'>
+    direction='row'
+    justify='flex-start'
+    alignItems='center'>
 
     <Grid  item
-      lg={ 12 }>
-      <Grid container justify='center' alignItems='center'>
-        <Grid item lg={ 12 }>
-          <PermIdentityIcon />
-          </Grid>
-      </Grid>
+      lg={ 1 }>
+        <PermIdentityIcon />
     </Grid>
 
-    <Grid item lg={ 12 }>
+    <Grid item lg={ 11 }>
       <Typography>
         { name }
       </Typography>
     </Grid>
-
   </Grid>
+
+
+
+
 )
 
 export default (Friend);

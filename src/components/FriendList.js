@@ -27,66 +27,63 @@ const styles = theme => ({
   }
 });
 
-const FriendList = ({ classes, userList, buttonHandler }) => (
+const FriendList = ({ classes, userList, buttonHandler, header }) => (
   <div className={ classes.root}>
     <Paper className={ classes.paper }>
       <Grid container>
         <Grid item lg={12}>
           <Grid container>
-            <Grid item  lg={6}>
+            <Grid item  lg={8}>
 
               <Typography variant='title'
                 gutterBottom>
-                  Current Search List
-
+                  { header }
               </Typography>
             </Grid>
 
-            <Grid item lg={6} container justify='flex-end' alignItems='flex-end'>
+            <Grid item lg={4} container justify='flex-end' alignItems='flex-end'>
               <Typography variant='title'
                 gutterBottom>
-                  0/8
+                  0/10
               </Typography>
             </Grid>
           </Grid>
           <Divider />
           </Grid>
-        <Grid item lg={ 9 } >
-          <Grid container>
-            {
-              userList.map( user =>
-                <Grid key={ user.id } item lg={3}>
+
+          <Grid container direction='column'>
+            { userList.map( user =>
+                <Grid key={ user.id } item lg={12}>
                   <Friend name={ user.userName } />
                 </Grid>)
             }
           </Grid>
-        </Grid>
 
-      { userList.length > 0 ? (
-        <Grid item
-          lg={ 12 }>
-
-            <Grid container   direction='row'
-              justify='flex-end'
-              alignItems='flex-end'>
-
-              <Button color='secondary' variant='contained' onClick={ buttonHandler }>
-                Compare
-              </Button>
-            </Grid>
-          </Grid>
-
-      ): (
-        <Grid item lg={12}>
-          <Grid container direction='row' justify='center' alignItems='flex-end' spacing={ 8 }>
-            <Grid item>
-              <div className={ classes.rowHeight}>
-                <Typography >No users in list</Typography>
+        { userList.length < 1 ? (
+          <Grid item lg={12}>
+            <Grid container direction='row' justify='center' alignItems='flex-end' spacing={ 8 }>
+              <Grid item>
+                <div className={ classes.rowHeight}>
+                  <Typography>
+                    No users in list
+                  </Typography>
                 </div>
+              </Grid>
             </Grid>
           </Grid>
-          </Grid>
-      )}
+          ) : (
+          <Grid item
+            lg={ 12 }>
+              <Grid container
+                direction='row'
+                justify='flex-end'
+                alignItems='flex-end'>
+                  <Button color='secondary' variant='contained' onClick={ buttonHandler }>
+                    Compare
+                  </Button>
+              </Grid>
+            </Grid>
+          )}
 
       </Grid>
     </Paper>
@@ -102,7 +99,31 @@ FriendList.propTypes = {
   classes: PropTypes.object
 
 }
-
+// { userList.length > 1 ? (
+//   <Grid item
+//     lg={ 12 }>
+//
+//       <Grid container   direction='row'
+//         justify='flex-end'
+//         alignItems='flex-end'>
+//
+//         <Button color='secondary' variant='contained' onClick={ buttonHandler }>
+//           Compare
+//         </Button>
+//       </Grid>
+//     </Grid>
+//
+// ): (
+//   <Grid item lg={12}>
+//     <Grid container direction='row' justify='center' alignItems='flex-end' spacing={ 8 }>
+//       <Grid item>
+//         <div className={ classes.rowHeight}>
+//           <Typography >No users in list</Typography>
+//           </div>
+//       </Grid>
+//     </Grid>
+//     </Grid>
+// )}
 
 
 export default withStyles(styles)(FriendList);

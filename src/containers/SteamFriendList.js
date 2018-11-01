@@ -4,6 +4,7 @@ import FriendList from '../components/FriendList';
 //import { fetchUserName, updateUserName } from '../redux/actions';
 
 const mapStateToProps = state => ({
+  header: 'Current Search List',
   userList: state.steamUserSearch.userList
 })
 

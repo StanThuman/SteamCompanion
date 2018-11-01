@@ -26,12 +26,13 @@ const styles = themes => ({
 });
 
 const CompareLayout = ({ classes }) => (
+<Grid container>
   <Grid container
+  spacing={ 24 }
+  direction='row'
+  justify='center'
+  alignItems='stretch'>
 
-    spacing={ 24 }
-    direction='row'
-    justify='center'
-    alignItems='stretch' >
     <Grid item container
       xs={ 8 }
       sm={ 8 }
@@ -51,7 +52,7 @@ const CompareLayout = ({ classes }) => (
     <Grid item
       className={classes.root}
       container
-      direction='row'
+      direction='column'
       justify='center'
       alignItems='stretch'
       lg={8} spacing={24}>
@@ -59,9 +60,10 @@ const CompareLayout = ({ classes }) => (
         <Grid item lg={4}>
           <SteamFriendSearch />
         </Grid>
-        <Grid item lg={8}>
+        <Grid item lg={4}>
           <SteamFriendList />
         </Grid>
+    </Grid>
   </Grid>
 </Grid>)
 
