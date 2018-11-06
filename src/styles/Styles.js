@@ -8,13 +8,14 @@ export const mainTheme = createMuiTheme({
       //main: '#c1d5e0'
     },
     secondary: {
-      //light: '#c3fdff',
+      light: '#ffffff',
       main: '#263238'
       //main: '#263238
     },
     background: {
       default: '#263238'
-    }
+    },
+    white: '#ffffff'
   }
 });
 

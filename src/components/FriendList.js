@@ -13,7 +13,7 @@ import Friend from './Friend';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    height:'100%'
+
   },
   paper: {
     ...theme.mixins.gutters(),
@@ -27,8 +27,8 @@ const styles = theme => ({
   }
 });
 
-const FriendList = ({ classes, userList, buttonHandler, header }) => (
-  <div className={ classes.root}>
+const FriendList = ({ classes, userList, buttonHandler, header}) => (
+  <div>
     <Paper className={ classes.paper }>
       <Grid container>
         <Grid item lg={12}>
@@ -44,7 +44,7 @@ const FriendList = ({ classes, userList, buttonHandler, header }) => (
             <Grid item lg={4} container justify='flex-end' alignItems='flex-end'>
               <Typography variant='title'
                 gutterBottom>
-                  0/10
+                  { userList.length}/10
               </Typography>
             </Grid>
           </Grid>
@@ -60,31 +60,31 @@ const FriendList = ({ classes, userList, buttonHandler, header }) => (
           </Grid>
 
         { userList.length < 1 ? (
-          <Grid item lg={12}>
-            <Grid container direction='row' justify='center' alignItems='flex-end' spacing={ 8 }>
+            <Grid container item lg={12} direction='row' justify='center' alignItems='flex-end' spacing={ 8 }>
               <Grid item>
                 <div className={ classes.rowHeight}>
-                  <Typography>
+                  <Typography color={ mainTheme.white }>
                     No users in list
                   </Typography>
                 </div>
               </Grid>
             </Grid>
-          </Grid>
           ) : (
-          <Grid item
-            lg={ 12 }>
-              <Grid container
-                direction='row'
-                justify='flex-end'
-                alignItems='flex-end'>
-                  <Button color='secondary' variant='contained' onClick={ buttonHandler }>
-                    Compare
-                  </Button>
-              </Grid>
+            <Grid container
+              item
+              direction='row'
+              justify='flex-end'
+              alignItems='flex-end'
+              lg={ 12 }>
+
+              <Button color='secondary'
+                variant='contained'
+                onClick={ buttonHandler }>
+                  Compare
+              </Button>
+
             </Grid>
           )}
-
       </Grid>
     </Paper>
   </div>

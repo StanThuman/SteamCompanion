@@ -11,6 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import { mainTheme } from '../styles/Styles';
 import SteamFriendSearch from '../containers/SteamFriendSearch';
 import SteamFriendList from '../containers/SteamFriendList';
+import GameList from './GameList';
 
 const styles = themes => ({
   root:{
@@ -18,57 +19,70 @@ const styles = themes => ({
   },
   paper: {
     ...themes.mixins.gutters(),
-    height: '100%',
     backgroundColor: mainTheme.palette.primary.main,
     paddingTop: themes.spacing.unit * 2,
     paddingBottom: themes.spacing.unit * 2
+  },
+  marginSetup: {
+    marginBottom:8
   }
+
 });
 
 const CompareLayout = ({ classes }) => (
-<Grid container>
+<React.Fragment>
   <Grid container
-  spacing={ 24 }
-  direction='row'
-  justify='center'
-  alignItems='stretch'>
+    justify='center'
+    alignItems='center'
+    spacing={ 24 } >
 
-    <Grid item container
-      xs={ 8 }
-      sm={ 8 }
-      lg={8}
-      spacing={24}>
+    <Grid container
+      item
+      lg={ 8 } spacing={ 16 }>
 
-      <Grid item xs={ 12 }>
+      <Grid item lg={ 12 }>
         <Paper className={ classes.paper } >
           <Typography variant='title'
             gutterBottom>Stepper placeholder
           </Typography>
         </Paper>
       </Grid>
-
-    </Grid>
-
-    <Grid item
-      className={classes.root}
-      container
-      direction='column'
-      justify='center'
-      alignItems='stretch'
-      lg={8} spacing={24}>
-
-        <Grid item lg={4}>
-          <SteamFriendSearch />
-        </Grid>
-        <Grid item lg={4}>
-          <SteamFriendList />
-        </Grid>
     </Grid>
   </Grid>
-</Grid>)
+
+  <Grid container
+    direction='row'
+    justify='center'
+    alignItems='center' spacing={ 24 }>
+
+    <Grid container
+      item lg={8}
+      spacing={ 8 }>
+
+      <Grid  item lg={ 3 }>
+        <Grid item lg={ 12 } className={classes.marginSetup}>
+          <SteamFriendSearch />
+        </Grid>
+
+        <Grid item lg={ 12}>
+          <SteamFriendList />
+        </Grid>
+      </Grid>
+
+      <Grid container item lg={9} spacing={8}><GameList /></Grid>
+    </Grid>
 
 
 
+  </Grid>
+
+
+</React.Fragment>)
+
+
+/*
+
+*/
 
 
 

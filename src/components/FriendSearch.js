@@ -12,7 +12,6 @@ import { mainTheme } from '../styles/Styles';
 const styles = theme => ({
   paper: {
       ...theme.mixins.gutters(),
-      height: '100%',
       backgroundColor: mainTheme.palette.primary.main,
       paddingTop: theme.spacing.unit * 2,
       paddingBottom: theme.spacing.unit * 2
