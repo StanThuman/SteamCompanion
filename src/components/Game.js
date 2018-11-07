@@ -19,9 +19,18 @@ const styles = theme => ({
 const Game = ({ classes }) => (
   <Paper className={ classes.paper } >
     <Grid container>
-      <Grid item lg={12}><Typography variant='title'
-        gutterBottom>Stepper placeholder
-      </Typography></Grid>
+
+      <Grid
+        item
+        lg={12}>
+
+        <Typography
+          variant='title'
+          gutterBottom>
+          Stepper placeholder
+        </Typography>
+      </Grid>
+
     </Grid>
   </Paper>
 )

@@ -30,58 +30,86 @@ const styles = themes => ({
 });
 
 const CompareLayout = ({ classes }) => (
-<React.Fragment>
-  <Grid container
-    justify='center'
-    alignItems='center'
-    spacing={ 24 } >
+<Grid
+  container
 
+  spacing={ 24 }
+ className={classes.root} >
+
+  <Grid item lg={ 12 }>
     <Grid container
-      item
-      lg={ 8 } spacing={ 16 }>
-
-      <Grid item lg={ 12 }>
+      direction='row'
+      justify='center'
+      alignItems='center'
+      spacing={ 24 } >
+      <Grid item lg={8}>
         <Paper className={ classes.paper } >
           <Typography variant='title'
-            gutterBottom>Stepper placeholder
+          gutterBottom>Stepper placeholder
           </Typography>
         </Paper>
       </Grid>
     </Grid>
   </Grid>
 
-  <Grid container
-    direction='row'
-    justify='center'
-    alignItems='center' spacing={ 24 }>
-
+  <Grid item lg={ 12 }>
     <Grid container
-      item lg={8}
-      spacing={ 8 }>
+      direction='row'
+      justify='center'
+      alignItems='flex-start'
+      spacing={ 24 }>
 
-      <Grid  item lg={ 3 }>
+      <Grid item lg={ 2 }>
         <Grid item lg={ 12 } className={classes.marginSetup}>
           <SteamFriendSearch />
         </Grid>
-
-        <Grid item lg={ 12}>
-          <SteamFriendList />
+        <Grid item lg={ 12} className={classes.marginSetup}>
+            <SteamFriendList />
         </Grid>
       </Grid>
 
-      <Grid container item lg={9} spacing={8}><GameList /></Grid>
+      <Grid item container lg={ 6 } spacing={ 8 }>
+        <GameList />
+      </Grid>
+
+
     </Grid>
+  </Grid>
+
+
+
 
 
 
   </Grid>
 
 
-</React.Fragment>)
+)
 
 
 /*
+<Grid container
+  direction='row'
+  justify='center'
+  alignItems='center' spacing={ 24 }>
 
+  <Grid container
+    item lg={8}
+    spacing={ 8 }>
+
+    <Grid  item lg={ 3 }>
+      <Grid item lg={ 12 } className={classes.marginSetup}>
+        <SteamFriendSearch />
+      </Grid>
+
+      <Grid item lg={ 12}>
+        <SteamFriendList />
+      </Grid>
+    </Grid>
+
+    <Grid container item lg={9} spacing={8}><GameList /></Grid>
+  </Grid>
+  </Grid>
 */
 
 

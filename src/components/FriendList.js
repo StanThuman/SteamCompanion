@@ -17,7 +17,7 @@ const styles = theme => ({
   },
   paper: {
     ...theme.mixins.gutters(),
-    height: '100%',
+  
     backgroundColor: mainTheme.palette.primary.main,
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2
@@ -28,7 +28,7 @@ const styles = theme => ({
 });
 
 const FriendList = ({ classes, userList, buttonHandler, header}) => (
-  <div>
+
     <Paper className={ classes.paper }>
       <Grid container>
         <Grid item lg={12}>
@@ -87,7 +87,7 @@ const FriendList = ({ classes, userList, buttonHandler, header}) => (
           )}
       </Grid>
     </Paper>
-  </div>
+
 )
 
 FriendList.propTypes = {
