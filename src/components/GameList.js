@@ -10,14 +10,14 @@ const styles = theme => ({
 
 let testNumber = [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4];
 let count=-1;
-const GameList = ({ classes }) => (
+const GameList = ({ classes, testList, gameList }) => (
   <React.Fragment>
     {
-      testNumber.map(item => {
+      testList.map(game => {
         count++;
         return(
           <Grid item key={ count } lg={ 12 }>
-            <Game />
+            <Game logo={ game.logo } name={ game.name }/>
           </Grid>
       )})
 

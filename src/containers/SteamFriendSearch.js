@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Textfield from '@material-ui/core/Textfield';
@@ -46,19 +45,22 @@ const mapDispatchToProps = dispatch => ({
   },
   onSubmit: (event,  userList, userNameInput) => {
     //check if friend username is in current list
-    let userExists = false;
-    let listIterator = 0;
-    while(!userExists && listIterator < userList.length){
-      if(userNameInput.toLowerCase() === userList[listIterator].userName.toLowerCase())
-        userExists = true;
-      listIterator++;
-    }
+    if(userList.length < 10){
+      let userExists = false;
+      let listIterator = 0;
 
-    if(!userExists)
-      dispatch(fetchUserName(userNameInput));
-    else
-      console.log("user already in list");
+      while(!userExists && listIterator < userList.length){
+        if(userNameInput.toLowerCase() === userList[listIterator].userName.toLowerCase())
+          userExists = true;
+        listIterator++;
+      }
+
+      if(!userExists)
+        dispatch(fetchUserName(userNameInput));
+      else
+        console.log("user already in list");
       //TODO: handle error
+    }
   }
 })
 

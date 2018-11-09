@@ -1,22 +1,27 @@
 /* action types */
-export const CHANGE_PAGEROUTE = 'CHANGE_PAGEROUTE';
-export const SET_INITIALROUTE = 'SET_INITIALROUTE';
-//export const SEARCH_USERNAME = 'SEARCH_USERNAME';
-export const UPDATE_USERNAME_INPUT = 'UPDATE_USERNAME_INPUT';
-export const REQUEST_USERNAME = 'REQUEST_ USERNAME';
-export const FETCH_USERNAME = 'FETCH_USERNAME_';
+import {
+  CHANGE_PAGEROUTE,
+  SET_INITIALROUTE,
+  UPDATE_USERNAME_INPUT,
+  REQUEST_USERNAME,
+  FETCH_USERNAME,
+  FETCH_USERNAME_SUCCESS,
+  FETCH_USERNAME_NOT_FOUND,
+  FETCH_USERNAME_FAILURE,  
+  RECEIVE_USERNAME,
+  ADD_USERNAMETOLIST,
+  REMOVE_USERNAMEFROMLIST,
+  FETCH_GAMESINCOMMON
+} from './types';
 
-export const FETCH_USERNAME_SUCCESS = 'FETCH_USERNAME_SUCCESS';
-export const FETCH_USERNAME_NOT_FOUND = 'FETCH_USERNAME_NOT_FOUND';
-export const FETCH_USERNAME_FAILURE = 'FETCH_USERNAME_FAILURE';
-export const RECEIVE_USERNAME = 'RECEIVE_USERNAME';
 
-export const ADD_USERNAMETOLIST = 'ADD_USERNAMETOLIST';
-export const REMOVE_USERNAMEFROMLIST = 'REMOVE_USERNAMEFROMLIST';
-export const FETCH_GAMESINCOMMON = 'FETCH_GAMESINCOMMON';
 
-//const STEAM_API_KEY = '26F6DB692027CC7884B8A067D190F6DF';
+
 const STEAM_API_KEY = '27626CB113371E137A46F6CD03D0DD66';
+//http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/
+//?key=27626CB113371E137A46F6CD03D0DD66&steamid=76561197960434622&include_appinfo=1&format=json
+//image_logo_url from response is the bigger one
+
 /* action creators   */
 export const changePageRoute = routeNumber => ({
     type: CHANGE_PAGEROUTE,
@@ -28,10 +33,6 @@ export const updateUserName = userName => ({
   userName
 });
 
-// export const searchUserName = userName => ({
-//     type: SEARCH_USERNAME,
-//     userName
-//   });
 export const requestUserName = userName => ({
     type: REQUEST_USERNAME,
     userName
@@ -51,8 +52,8 @@ export const receiveUserName = (userName, json) => ({
   receivedAt: Date.now()
 });
 
-export const fetchUserName = userName => {
-  return function( dispatch ) {
+export const fetchUserName = userName => (
+  ( dispatch ) => {
     dispatch(requestUserName(userName)); // setup loading ui state
     //make api request
     return fetch(`http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001
@@ -71,7 +72,7 @@ export const fetchUserName = userName => {
         else
           dispatch(receiveUserName(userName, json.response));
     });
-}};
+});
 
 
 

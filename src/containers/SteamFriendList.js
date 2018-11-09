@@ -6,13 +6,12 @@ import FriendList from '../components/FriendList';
 const mapStateToProps = state => ({
   header: 'Current Search List',
   userList: state.steamUserSearch.userList
-  
 })
 
 const mapDispatchToProps = ({ dispatch }) => ({
-  buttonHandler: (event) => {
+  buttonHandler: (event, userList) => {
     console.log("CLICKED ME");
-    dispatch(fetchGamesInCommon())
+    dispatch(fetchGamesInCommon(userList))
   }
 })
 

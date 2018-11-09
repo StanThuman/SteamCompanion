@@ -11,7 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import { mainTheme } from '../styles/Styles';
 import SteamFriendSearch from '../containers/SteamFriendSearch';
 import SteamFriendList from '../containers/SteamFriendList';
-import GameList from './GameList';
+import SteamGameList from '../containers/SteamGameList';
 
 const styles = themes => ({
   root:{
@@ -36,13 +36,13 @@ const CompareLayout = ({ classes }) => (
   spacing={ 24 }
  className={classes.root} >
 
-  <Grid item lg={ 12 }>
+  <Grid item lg={ 12 } md={ 12 } sm={ 12 } xs={ 12 }>
     <Grid container
       direction='row'
       justify='center'
       alignItems='center'
       spacing={ 24 } >
-      <Grid item lg={8}>
+      <Grid item lg={ 8 } md={ 10 } sm={ 8 } xs={ 12 }>
         <Paper className={ classes.paper } >
           <Typography variant='title'
           gutterBottom>Stepper placeholder
@@ -52,14 +52,14 @@ const CompareLayout = ({ classes }) => (
     </Grid>
   </Grid>
 
-  <Grid item lg={ 12 }>
+  <Grid item lg={ 12 } md={ 12 } sm={ 12 } xs={ 12 }>
     <Grid container
       direction='row'
       justify='center'
       alignItems='flex-start'
       spacing={ 24 }>
 
-      <Grid item lg={ 2 }>
+      <Grid item lg={ 2 } md={ 3 }>
         <Grid item lg={ 12 } className={classes.marginSetup}>
           <SteamFriendSearch />
         </Grid>
@@ -68,8 +68,8 @@ const CompareLayout = ({ classes }) => (
         </Grid>
       </Grid>
 
-      <Grid item container lg={ 6 } spacing={ 8 }>
-        <GameList />
+      <Grid item container lg={ 6 } md={ 5 } spacing={ 8 }>
+        <SteamGameList />
       </Grid>
 
 

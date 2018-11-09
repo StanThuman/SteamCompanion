@@ -17,7 +17,7 @@ const styles = theme => ({
   },
   paper: {
     ...theme.mixins.gutters(),
-  
+
     backgroundColor: mainTheme.palette.primary.main,
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2
@@ -79,7 +79,7 @@ const FriendList = ({ classes, userList, buttonHandler, header}) => (
 
               <Button color='secondary'
                 variant='contained'
-                onClick={ buttonHandler }>
+                onClick={ (event) => { buttonHandler(event, userList) }}>
                   Compare
               </Button>
 

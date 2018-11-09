@@ -2,7 +2,7 @@ import {
   CHANGE_PAGEROUTE,
   SET_INITIALROUTE
 
-} from './actions';
+} from './types';
 
 
 export const routeNumber = ( state = 0, action ) => {
