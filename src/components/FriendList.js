@@ -99,31 +99,5 @@ FriendList.propTypes = {
   classes: PropTypes.object
 
 }
-// { userList.length > 1 ? (
-//   <Grid item
-//     lg={ 12 }>
-//
-//       <Grid container   direction='row'
-//         justify='flex-end'
-//         alignItems='flex-end'>
-//
-//         <Button color='secondary' variant='contained' onClick={ buttonHandler }>
-//           Compare
-//         </Button>
-//       </Grid>
-//     </Grid>
-//
-// ): (
-//   <Grid item lg={12}>
-//     <Grid container direction='row' justify='center' alignItems='flex-end' spacing={ 8 }>
-//       <Grid item>
-//         <div className={ classes.rowHeight}>
-//           <Typography >No users in list</Typography>
-//           </div>
-//       </Grid>
-//     </Grid>
-//     </Grid>
-// )}
-
 
 export default withStyles(styles)(FriendList);

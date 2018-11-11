@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -8,21 +9,25 @@ const styles = theme => ({
   root: {}
 })
 
-let testNumber = [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4];
 let count=-1;
-const GameList = ({ classes, testList, gameList }) => (
-  <React.Fragment>
-    {
-      testList.map(game => {
+const GameList = ({ classes, gameList }) => (
+  <Grid item container lg={12}>
+    {      
+      gameList.map(game => {        
         count++;
         return(
           <Grid item key={ count } lg={ 12 }>
-            <Game logo={ game.logo } name={ game.name }/>
+            <Game logo={ game.img_logo_url } name={ game.name }/>
           </Grid>
-      )})
-
+      );
+    })
+    
 
     }
-  </React.Fragment>);
+  </Grid>);
 
-export default withStyles(styles)(GameList);
+  React.proptypes = {
+    gameList: PropTypes.array
+  }
+
+export default GameList;

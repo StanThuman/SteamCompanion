@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -46,4 +47,8 @@ const Game = ({ classes, logo, name }) => (
   </Paper>
 )
 
+React.proptypes = {
+  logo: PropTypes.string,
+  name: PropTypes.string
+}
 export default withStyles(styles)(Game);

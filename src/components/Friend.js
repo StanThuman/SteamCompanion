@@ -18,11 +18,11 @@ const Friend = ({ classes, name }) => (
     alignItems='center'>
 
     <Grid  item
-      lg={ 1 }>
+       lg={ 2 } md={ 2 }>
         <PermIdentityIcon />
     </Grid>
 
-    <Grid item lg={ 11 }>
+    <Grid item lg={ 10 } md={ 10 }>
       <Typography>
         { name }
       </Typography>
