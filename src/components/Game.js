@@ -17,27 +17,20 @@ const styles = theme => ({
 })
 
 
-const Game = ({ classes, logo, name }) => (
+const Game = ({ classes, icon, name }) => (
   <Paper className={ classes.paper } >
     <Grid container>
 
       <Grid
-        item lg={3}>
-        <img src={ logo } />
+        item lg={4}>
+        <img src={ icon } />
       </Grid>
-      <Grid item lg={2}>
-        <Grid item lg={12}>
-            <Typography variant='title' gutterBottom>
-              Name
-            </Typography>
-            <Divider />
-        </Grid>
-        <Grid item lg={12}>
-
+      <Grid item container lg={8}>
+        <Grid item lg={10}>
+        
           <Typography
-            variant='body1'
-            >
-            {name}
+            variant='body1'>
+               Name: {name}
           </Typography>
 
         </Grid>
@@ -45,10 +38,10 @@ const Game = ({ classes, logo, name }) => (
 
     </Grid>
   </Paper>
-)
+);
 
-React.proptypes = {
-  logo: PropTypes.string,
+Game.propTypes = {
+  icon: PropTypes.string,
   name: PropTypes.string
-}
+};
 export default withStyles(styles)(Game);

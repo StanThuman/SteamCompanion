@@ -11,23 +11,28 @@ const styles = theme => ({
 
 let count=-1;
 const GameList = ({ classes, gameList }) => (
-  <Grid item container lg={12}>
+  <React.Fragment>
     {      
       gameList.map(game => {        
         count++;
         return(
           <Grid item key={ count } lg={ 12 }>
-            <Game logo={ game.img_logo_url } name={ game.name }/>
+            <Game icon={ game.icon } name={ game.name }/>
           </Grid>
       );
     })
     
 
     }
-  </Grid>);
+  </React.Fragment>);
 
-  React.proptypes = {
-    gameList: PropTypes.array
+  React.propTypes = {
+    gameList: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+        icon: PropTypes.string
+      })
+    )
   }
 
 export default GameList;

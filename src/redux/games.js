@@ -2,7 +2,9 @@ import {
   FETCH_GAMESINCOMMON,
   REQUEST_USER_GAMELISTS,
   RECEIVED_USER_GAMELIST,
-  RECEIVED_TOTAL_USER_GAMELISTS
+  RECEIVED_TOTAL_USER_GAMELISTS,
+  COMPARE_USER_GAMELIST,
+  UPDATE_GAMELIST_LOAD_COUNTER
 
  } from './types';
 
@@ -14,9 +16,18 @@ export const recieveUserGameList = (json) => ({
   type: RECEIVED_USER_GAMELIST,
   gameList: json.games
 })
+export const compareGameLists = (json) => ({
+  type: COMPARE_USER_GAMELIST,
+  newGameList: json.games
+})
 
 export const receivedTotaluserGameLists = () => ({
   type: RECEIVED_TOTAL_USER_GAMELISTS
+})
+
+export const updateGameListLoadCounter = (gameListLength) => ({
+  type: UPDATE_GAMELIST_LOAD_COUNTER,
+  gameListLength 
 })
 
 export const fetchGamesInCommon = userList => (
@@ -24,61 +35,79 @@ export const fetchGamesInCommon = userList => (
     //change state loading to true
     console.log("inside fetch")
     dispatch(requestUserGameLists());
-    let idCounter = 0;
-    let comparedGames = 0;
-    do{
-      console.log("HERE")
-      console.log(userList)
-      fetch('http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=27626CB113371E137A46F6CD03D0DD66&steamid='
-      + userList[idCounter].steamId + '&include_appinfo=1&format=json')
-      .then(
-        response => response.json(),
-        error => console.log("an error has occured retrieves user game list")
-        )
-        .then( json => {
-          if(idCounter == 0)
-            comparedGames = json.response.game_count;
-          
-            //compare game lists
-            //if compare == 0
-            // stop comparing
-            //end
-            //display no games in common
-            //dispatch action no games to compare          
-            console.log("HERE");
-            console.log(json);
  
-          dispatch(recieveUserGameList(json.response));
-        });
-        
-        idCounter++;
+    for(let userCounter = 0; userCounter < userList.length; userCounter++) {      
+      fetch('http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=27626CB113371E137A46F6CD03D0DD66&steamid='
+        + userList[userCounter].steamId + '&include_appinfo=1&format=json')
+        .then(
+          response => response.json(),
+          error => console.log("an error has occured retrieves user game list"))
+        .then( json => {
+            console.log('userCounter: ' + userCounter)
+            if(userCounter > 0)
+              dispatch(compareGameLists(json.response));
+            else
+              dispatch(recieveUserGameList(json.response));
+        });        
+    }   
+  });
+
+
+  const compareCurrentWithNewGameList = ( gameListState, action) => {
+    console.log("current gamelist")
+    console.log(gameListState);
+    console.log("new gameList")
+    console.log(action.newGameList)
+
+
+    let mergedGameList = [];
+    for(let gameListIterator = 0; gameListIterator < gameListState.gameList.length; gameListIterator++){
+      
+      for(let newGameListIterator = 0; newGameListIterator < action.newGameList.length; newGameListIterator++){ 
+        if(gameListState.gameList[gameListIterator].appid === action.newGameList[newGameListIterator].appid){
+          mergedGameList.push(gameListState.gameList[gameListIterator]);
+        }
+
       }
-    while(comparedGames > 0 && idCounter < userIds.length)
-
-    dispatch(receivedTotaluserGameLists());
-
-  }); //return
+    }
+    console.log('mergedGameList')
+    console.log(mergedGameList);
 
 
-
-
-
-export const gameList = (state = [], action) => {
+    
+    return { ...gameListState, gameList: [ ...mergedGameList ]}
+  }
+ 
+export const gameData = (state = { gameList: [], isLoading: false}, action) => {
   switch(action.type){
     case FETCH_GAMESINCOMMON:
-      return state;
+      return { ...state, isLoading: true };
 
     case REQUEST_USER_GAMELISTS:
-    //loading state
-    
-    return state;
+    //loading state    
+      return { ...state, isLoading: true };    
 
-    case RECEIVED_USER_GAMELIST:
-    return [ ...state, ...action.gameList ]
+    case RECEIVED_USER_GAMELIST:     
+      return { ...state, gameList: [ ...action.gameList.map( game => ({
+        appid: game.appid,
+        name: game.name,
+        icon: `http://media.steampowered.com/steamcommunity/public/images/apps/${ game.appid}/${game.img_logo_url}.jpg`,      
+        }))]
+      }
 
+    case COMPARE_USER_GAMELIST:
+      return compareCurrentWithNewGameList(state, action);
+
+      
+
+    case RECEIVED_TOTAL_USER_GAMELISTS:
+      return { ...state, isLoading: false }
 
     default:
       return state;
 
   }
 }
+
+
+

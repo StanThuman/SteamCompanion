@@ -28,37 +28,22 @@ class HomeLayout extends Component {
     return(
 
         <Grid container justify='center' alignItems='center' spacing={ 24 }>
-          <Grid container item direction='row' xs={ 8 } spacing={ 24 }  >
+          <Grid container item direction='row' xs={ 8 } alignItems='stretch' spacing={ 24 }  >
             <Grid  item  xs={ 12 } sm={12} md={8}>
-              <Paper className={ classes.paper } color='secondary'>
-                <Typography variant='title' gutterBottom>Welcome to my application!</Typography>
+              <Paper className={ classes.paper }  color='secondary'>
+                <Typography variant='title' gutterBottom>Welcome to Steam companion!</Typography>
                 <Divider />
                 <br />
                 <Typography variant='body1' >
-                  This is an application I'm making in my own time
+                  This is an application I've been working on making in my own time
                   just for funsies. The "compare" tab will take you to the
-                  my game comparison tool. You select the steam users you want to
-                  compare games with, and the games in common should load up blah
-                  blah blah blah blah blah blah blah blah blah blah blah
-                  blah blah
-                  blah blah blah blah blah blah blah blah blah blah blah
-                  blah blah blah blah blah blah blah blah blah blah blah
-                  blah blah blah blah blah blah blah blah blah blah blah
-                  blah blah blah blah blah blah blah blah blah blah blah
-                  blah blah blah blah blah blah blah blah blah blah blah
-                  blah blah blah blah blah blah blah blah blah blah blah
-                  blah blah blah blah blah blah blah blah blah blah blah
-                  <br />
-                  THIS JUST IN
-                  <br />
-                  blah blah blah blah blah blah blah blah blah blah blah
-                  blah blah blah blah blah blah blah blah blah blah blah
-                  blah blah blah blah blah blah blah blah blah blah blah
-                  blah blah blah blah blah blah blah blah blah blah blah
-                  blah blah blah blah blah blah blah blah blah blah blah
+                  my game comparison tool. You can select the steam users you want to
+                  compare games with to see what games are owned by each user.
+                  I am constantly updating it but for now, it's in a functional state.                                   
+                  
                 </Typography>
-                <br />
-                <Button variant='contained' color='secondary'>Test Button</Button>
+                
+                
               </Paper>
             </Grid>
             <Grid  item  xs={ 12 } sm={12} md={4}>

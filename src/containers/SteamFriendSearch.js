@@ -44,7 +44,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(updateUserName(event.target.value))
   },
   onSubmit: (event,  userList, userNameInput) => {
-    //check if friend username is in current list
+    //check if friend username is in current list    
     if(userList.length < 10){
       let userExists = false;
       let listIterator = 0;

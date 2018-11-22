@@ -11,15 +11,12 @@ import serialize from 'serialize-javascript';
 import { StaticRouter } from 'react-router-dom';
 import { logger } from 'redux-logger';
 
-//material ui alreadyImportedModules
 import {
   MuiThemeProvider,
   createMuiTheme,
   createGenerateClassName
 } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import green from '@material-ui/core/colors/green';
-import red from '@material-ui/core/colors/red';
 //redux imports
 import thunk from 'redux-thunk';
 import { createStore, applyMiddleware } from 'redux';
@@ -27,36 +24,26 @@ import{ Provider } from 'react-redux';
 
 import App from '../components/App';
 import rootReducer from '../redux/index';
-
 import { mainTheme } from '../styles/Styles';
 
 const app = express();
 app.use(express.static('public')); //server public files to frontend
 //app.use('/img', express.static('src'));
 
+app.get('/compare/:steamId', (req, res) => {
+
+  res.setHeader('Content-Type', 'application/json');
+  console.log("compare");
+  res.json(JSON.stringify({ test: 'anothertest'}));
+})
 //callback for server requests
 app.get('*', (req,res) => {
+  console.log('universal');
   let initialState = {
-    routeNumber: 0    
+    routeNumber: calculateRouteNumber(req.originalUrl)   
   };
-  switch(req.originalUrl){
-    case '/compare':
-    initialState.routeNumber = 1;
-    break;
-    case '/about':
-      initialState.routeNumber = 3;
-    break;
-    default:
-      initialState.routeNumber = 0;
-    break;
-  }
 
-//Your Steam Web API Key
-//Key: 26F6DB692027CC7884B8A067D190F6DF
-//Domain Name: localhost
-  // const params = qs.parse(req.query);
-
-
+  
 
   const store = createStore(rootReducer, initialState, applyMiddleware(thunk, logger));
   var reactPage = convertReactToString(req, store);
@@ -93,6 +80,21 @@ function convertReactToString(req, store){
     </Provider>
   );
   return({markup, css});
+}
+
+function calculateRouteNumber(route){
+   
+  switch(route){
+    case '/compare':
+      return 1;
+    
+    case '/about':
+      return 3;
+    
+    default:
+      return 0;
+    
+  }
 }
 
 //builds html page

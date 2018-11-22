@@ -22,12 +22,12 @@ var browserConfig = {
       }
     ]
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      __isBrowser__: true
-    })
+  // plugins: [
+  //   // new webpack.DefinePlugin({
+  //   //   __isBrowser__: true
+  //   // })
 
-  ]
+  // ]
 }
 
 // var unitTestsConfig = {
@@ -70,11 +70,11 @@ var serverConfig = {
 
     ]
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      __isBrowser__: false
-    })
-  ]
+  // plugins: [
+  //   // new webpack.DefinePlugin({
+  //   //   __isBrowser__: false
+  //   // })
+  // ]
 }
 
 module.exports = [serverConfig, browserConfig]//, stylesConfig]; unitTestsConfig
