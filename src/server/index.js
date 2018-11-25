@@ -2,6 +2,8 @@
 import qs from 'qs';
 import "@babel/polyfill";
 import express from 'express';
+import apiRoutes from './apiRoutes';
+
 //react imports
 import React from 'react';
 import { SheetsRegistry } from 'react-jss/lib/jss';
@@ -30,12 +32,15 @@ const app = express();
 app.use(express.static('public')); //server public files to frontend
 //app.use('/img', express.static('src'));
 
-app.get('/compare/:steamId', (req, res) => {
+// app.get('/users/:steamId', (req, res) => {
 
-  res.setHeader('Content-Type', 'application/json');
-  console.log("compare");
-  res.json(JSON.stringify({ test: 'anothertest'}));
-})
+//   res.setHeader('Content-Type', 'application/json');
+//   console.log("IM HERE");
+//   res.json(JSON.stringify({ test: 'anothertest'}));
+// })
+
+app.use('/', apiRoutes);
+
 //callback for server requests
 app.get('*', (req,res) => {
   console.log('universal');

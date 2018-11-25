@@ -67,3 +67,6 @@ tests.js
 
 # server output
 server.js
+
+# api key
+apiKey.js

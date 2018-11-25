@@ -17,7 +17,7 @@ import {
 
 
 
-const STEAM_API_KEY = '27626CB113371E137A46F6CD03D0DD66';
+
 //http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/
 //?key=27626CB113371E137A46F6CD03D0DD66&steamid=76561197960434622&include_appinfo=1&format=json
 //image_logo_url from response is the bigger one
@@ -56,8 +56,9 @@ export const fetchUserName = userName => (
   ( dispatch ) => {
     dispatch(requestUserName(userName)); // setup loading ui state
     //make api request
-    return fetch(`http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001
-      ?key=${STEAM_API_KEY}&vanityurl=${userName}`.replace(/\s/g, ''))
+    // return fetch(`http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001
+    //   ?key=${STEAM_API_KEY}&vanityurl=${userName}`.replace(/\s/g, ''))
+    return fetch(`http://localhost:3000/users/${userName}`)
       .then(
         response => {
           console.log('found user in api')
@@ -76,24 +77,3 @@ export const fetchUserName = userName => (
 
 
 
-
-// export const addUserNameToList = userName => ({
-//   type: ADD_USERNAMETOLIST,
-//   userName
-// });
-//
-// export const removeUserNameFromList = userName => ({
-//   type: REMOVE_USERNAMEFROMLIST,
-//   userName
-// });
-//
-// export const fetchGamesInCommon = userNames => ({
-//   type: FETCH_GAMESINCOMMON,
-//   userNames
-// });
-
-
-// export const initialPageRoute = pathName => ({
-//   type: SET_INITIALROUTE,
-//   pathName
-// })

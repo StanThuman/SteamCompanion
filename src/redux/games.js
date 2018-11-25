@@ -43,13 +43,13 @@ export const fetchGamesInCommon = userList => (
           response => response.json(),
           error => console.log("an error has occured retrieves user game list"))
         .then( json => {
-            console.log('userCounter: ' + userCounter)
-            if(userCounter > 0)
-              dispatch(compareGameLists(json.response));
-            else
-              dispatch(recieveUserGameList(json.response));
+          if(userCounter > 0)
+          dispatch(compareGameLists(json.response));
+          else
+          dispatch(recieveUserGameList(json.response));
         });        
-    }   
+        console.log('userCounter: ' + userCounter)
+      }   
   });
 
 
@@ -91,7 +91,7 @@ export const gameData = (state = { gameList: [], isLoading: false}, action) => {
       return { ...state, gameList: [ ...action.gameList.map( game => ({
         appid: game.appid,
         name: game.name,
-        icon: `http://media.steampowered.com/steamcommunity/public/images/apps/${ game.appid}/${game.img_logo_url}.jpg`,      
+        icon: `http://media.steampowered.com/steamcommunity/public/images/apps/${ game.appid }/${ game.img_logo_url }.jpg`,      
         }))]
       }
 
