@@ -54,24 +54,19 @@ export const receiveUserName = (userName, json) => ({
 
 export const fetchUserName = userName => (
   ( dispatch ) => {
-    dispatch(requestUserName(userName)); // setup loading ui state
-    //make api request
-    // return fetch(`http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001
-    //   ?key=${STEAM_API_KEY}&vanityurl=${userName}`.replace(/\s/g, ''))
+    dispatch(requestUserName(userName)); // setup loading ui state    
     return fetch(`http://localhost:3000/users/${userName}`)
       .then(
         response => {
-          console.log('found user in api')
           return response.json();
         },
         error => console.log('error fetching username data.')
       )
-    .then( (json) => {
-        console.log(json.response);
-        if('message' in json.response)
-          dispatch(requestUsernameNotFound());
-        else
+    .then( (json) => {        
+        if(json.response.success === 1)
           dispatch(receiveUserName(userName, json.response));
+        else
+          dispatch(requestUsernameNotFound());
     });
 });
 
