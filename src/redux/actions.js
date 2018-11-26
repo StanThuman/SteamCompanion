@@ -55,7 +55,8 @@ export const receiveUserName = (userName, json) => ({
 export const fetchUserName = userName => (
   ( dispatch ) => {
     dispatch(requestUserName(userName)); // setup loading ui state    
-    return fetch(`http://localhost:3000/users/${userName}`)
+
+    return fetch(`http://localhost:3000/api/users/${userName}`)
       .then(
         response => {
           return response.json();

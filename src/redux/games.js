@@ -37,16 +37,15 @@ export const fetchGamesInCommon = userList => (
     dispatch(requestUserGameLists());
  
     for(let userCounter = 0; userCounter < userList.length; userCounter++) {      
-      fetch('http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=27626CB113371E137A46F6CD03D0DD66&steamid='
-        + userList[userCounter].steamId + '&include_appinfo=1&format=json')
+      fetch('http://localhost:3000/api/games/' + userList[userCounter].steamId)
         .then(
           response => response.json(),
           error => console.log("an error has occured retrieves user game list"))
         .then( json => {
           if(userCounter > 0)
-          dispatch(compareGameLists(json.response));
+            dispatch(compareGameLists(json.response));
           else
-          dispatch(recieveUserGameList(json.response));
+            dispatch(recieveUserGameList(json.response));
         });        
         console.log('userCounter: ' + userCounter)
       }   
