@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = ( dispatch ) => ({
   buttonHandler: (event, userList) => {
-    console.log("CLICKED ME");
+    
     dispatch(fetchGamesInCommon(userList))
   }
 })
