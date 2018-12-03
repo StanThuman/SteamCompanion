@@ -32,23 +32,33 @@ export const updateGameListLoadCounter = (gameListLength) => ({
 
 export const fetchGamesInCommon = userList => (
   (dispatch) => {
-    //change state loading to true
-    console.log("inside fetch")
+    //change state loading to true    
     dispatch(requestUserGameLists());
- 
-    for(let userCounter = 0; userCounter < userList.length; userCounter++) {      
-      fetch('http://localhost:3000/api/games/' + userList[userCounter].steamId)
-        .then(
-          response => response.json(),
-          error => console.log("an error has occured retrieves user game list"))
-        .then( json => {
-          if(userCounter > 0)
-            dispatch(compareGameLists(json.response));
-          else
-            dispatch(recieveUserGameList(json.response));
-        });        
-        console.log('userCounter: ' + userCounter)
-      }   
+    // 'http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=27626CB113371E137A46F6CD03D0DD66&steamid='
+    //+ userList[userCounter].steamId + '&include_appinfo=1&format=json'
+    let url = new URL('http://localhost:3000/api/games');
+
+    userList.map((element, index) => {
+      console.log(element.steamId);
+      url.searchParams.append('userList[]', element.steamId);
+      
+    })
+    console.log(url);
+
+    return fetch(url)
+      .then(
+        response => response.json(),
+        error => console.log("an error has occured retrieves user game list"))
+      .then( json => {        
+        //json = JSON.parse(json);
+        // if(userCounter > 0)
+        //   dispatch(compareGameLists(json.response));
+        // else
+        console.log(json);
+        json = JSON.parse(json);
+          dispatch(recieveUserGameList(json.response));
+      });              
+       
   });
 
 

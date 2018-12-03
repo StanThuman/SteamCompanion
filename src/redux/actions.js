@@ -55,7 +55,7 @@ export const receiveUserName = (userName, json) => ({
 export const fetchUserName = userName => (
   ( dispatch ) => {
     dispatch(requestUserName(userName)); // setup loading ui state    
-
+    
     return fetch(`http://localhost:3000/api/users/${userName}`)
       .then(
         response => {
@@ -64,8 +64,9 @@ export const fetchUserName = userName => (
         error => console.log('error fetching username data.')
       )
     .then( (json) => {        
+        json = JSON.parse(json);  
         if(json.response.success === 1)
-          dispatch(receiveUserName(userName, json.response));
+          dispatch(receiveUserName(userName, json['response']));
         else
           dispatch(requestUsernameNotFound());
     });
