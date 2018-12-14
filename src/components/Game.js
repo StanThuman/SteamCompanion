@@ -16,7 +16,6 @@ const styles = theme => ({
   }
 })
 
-
 const Game = ({ classes, icon, name }) => (
   <Paper className={ classes.paper } >
     <Grid container>

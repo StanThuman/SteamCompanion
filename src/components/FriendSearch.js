@@ -10,32 +10,32 @@ import { withStyles } from '@material-ui/core/styles';
 import { mainTheme } from '../styles/Styles';
 
 const styles = theme => ({
-  paper: {
-      ...theme.mixins.gutters(),
-      backgroundColor: mainTheme.palette.primary.main,
-      paddingTop: theme.spacing.unit * 2,
-      paddingBottom: theme.spacing.unit * 2
-    },
+  paper: {    
+    ...theme.mixins.gutters(),
+    backgroundColor: mainTheme.palette.primary.main,
+    paddingTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 2
+  },
 });
 
-export const FriendSearch = ({ classes, children}) => (
+export const FriendSearch = ({ classes, children }) => (
 
-      <Paper className={ classes.paper } color='primary'>
-        <Grid container>
+  <Paper className={ classes.paper } color='primary'>
+    <Grid container>
 
-          <Grid item lg={ 12 }>
-            <Typography variant='title' gutterBottom>
-              Search Steam Users
-              <Divider />
-            </Typography>
-          </Grid>
+      <Grid item lg={ 12 }>
+        <Typography variant='title' gutterBottom>
+          Search Steam Users
           <Divider />
-          <Grid item lg={ 12 }>
-            { children }
-          </Grid>
+        </Typography>
+      </Grid>
+      <Divider />
+      <Grid item lg={ 12 }>
+        { children }
+      </Grid>
 
-        </Grid>
-      </Paper>
+    </Grid>
+  </Paper>
 );
 
 export default withStyles(styles)(FriendSearch);

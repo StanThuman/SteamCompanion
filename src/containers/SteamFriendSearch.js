@@ -21,6 +21,7 @@ const SteamFriendSearch = ({ userList, userNameInput, onChange, onSubmit }) => (
           value={ userNameInput }
           margin='normal' />
       </Grid>
+     
 
       <Grid container item lg={ 12 } direction='row' justify='flex-end' alignItems='flex-end'>
         <Button
@@ -44,7 +45,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(updateUserName(event.target.value))
   },
   onSubmit: (event,  userList, userNameInput) => {
-    //check if friend username is in current list    
+    //check if friend username is in current list        
     if(userList.length < 10){
       let userExists = false;
       let listIterator = 0;
@@ -61,7 +62,7 @@ const mapDispatchToProps = dispatch => ({
         console.log("user already in list");
       //TODO: handle error
     }
-  }
+   }
 })
 
 

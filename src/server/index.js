@@ -30,14 +30,7 @@ import { mainTheme } from '../styles/Styles';
 
 const app = express();
 app.use(express.static('public')); //server public files to frontend
-//app.use('/img', express.static('src'));
 
-// app.get('/users/:steamId', (req, res) => {
-
-//   res.setHeader('Content-Type', 'application/json');
-//   console.log("IM HERE");
-//   res.json(JSON.stringify({ test: 'anothertest'}));
-// })
 
 app.use('/', apiRoutes);
 
@@ -121,6 +114,6 @@ function renderHtml(reactPage, preloadedState){
         <div id='app'>${reactPage.markup}</div>
       </body>
     </html>
-    `);
+  `);
 }
 //#2B3856

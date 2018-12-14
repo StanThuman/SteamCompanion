@@ -12,22 +12,19 @@ let createUrl = (steamId) => (
 
 let apiCall2 =  (steamIds, counter) => {
     let url = createUrl(steamIds[0]);
-    return new Promise( (resolve, reject) => {
-    
-        http.get(url, 
-            (response) => {
-                let data = '';
-                
-                response.on('data', (chunk) => {
-                    data += chunk;
-                });
+    return new Promise( (resolve, reject) => {    
+        http.get(url, (response) => {
+            let data = '';
+            
+            response.on('data', (chunk) => {
+                data += chunk;
+            });
 
-                response.on('error', () => reject('error'));
+            response.on('error', () => reject('error'));
 
-                response.on('end', () =>{
-                resolve(data);
-                })
-
+            response.on('end', () =>{
+            resolve(data);
+            })
         })
     });
 }
@@ -36,31 +33,29 @@ let apiCall = (steamIds, counter) => {
 
     let url = createUrl(steamIds[counter]);
 
-    return http.get(url, 
-        (response) => {
-            let data = '';
-            
-            response.on('data', (chunk) => {
-                data += chunk;
-            });
+    return http.get(url, (response) => {
+        let data = '';
+        
+        response.on('data', (chunk) => {
+            data += chunk;
+        });
 
-            response.on('end', () =>{
-                if(counter < steamIds.length){
-                    console.log(counter);                    
-                    counter++;                    
-                    if(counter < steamIds.length)
-                        apiCall(steamIds, counter); //make call                    
-                    else{
-                        console.log(url)
-                        return data;
-                    }
-                }
+        response.on('end', () =>{
+            if(counter < steamIds.length){
+                console.log(counter);                    
+                counter++;                    
+                if(counter < steamIds.length)
+                    apiCall(steamIds, counter); //make call                    
                 else{
-                    console.log('sending data back');
+                    console.log(url)
                     return data;
                 }
-            })
-
+            }
+            else{
+                console.log('sending data back');
+                return data;
+            }
+        })
     })
 }
     
@@ -101,28 +96,6 @@ router.use('/api/games', (req, res) => {
     })
 
     //promise.then((data) => res.json(data), error => console.log("error"))   
-    
-    
-    
-    //let userList = JSON.parse(req.params);
-    // http.get('https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=' + STEAM_API_KEY +'&steamid='
-    //     + req.query.userList[0] + '&include_appinfo=1&format=json' , 
-
-    // (response) => {
-
-    //     let data = '';
-
-    //     response.on('data', (chunk) => {
-    //         data += chunk;
-    //     });
-
-    //     response.on('end', () => {
-    //         data = JSON.parse(data);            
-    //         console.log(data);
-    //         res.json(data);
-    //     });
-
-    // });
 })
 
 
